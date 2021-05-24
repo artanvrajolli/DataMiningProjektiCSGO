@@ -1,0 +1,17 @@
+import pandas as pd
+import numpy as np
+data = pd.read_csv("Table_1Size.csv")
+data.drop(data[data['Map_1'] == "Default"].index, inplace = True)
+data['Map_3'] = data['Map_3'].fillna(0)
+data['Map3_Team1_Score'] = data['Map3_Team1_Score'].fillna(0)
+data['Map3_Team2_Score'] = data['Map3_Team2_Score'].fillna(0)
+data['Map2_Team1_Score'] = data['Map2_Team1_Score'].fillna(0)
+data['Map2_Team2_Score'] = data['Map2_Team2_Score'].fillna(0)
+data['Map1_Team1_Score'] = data['Map1_Team1_Score'].fillna(0)
+data['Map1_Team2_Score'] = data['Map1_Team2_Score'].fillna(0)
+data['Map1_Team1_Score'] = np.where(data['Map1_Team1_Score'] is None or data['Map1_Team1_Score'] == '-', 0, data['Map1_Team1_Score'])
+data['Map1_Team2_Score'] = np.where(data['Map1_Team2_Score'] is None or data['Map1_Team2_Score'] == '-', 0, data['Map1_Team2_Score'])
+data['Map2_Team1_Score'] = np.where(data['Map2_Team1_Score'] is None or data['Map2_Team1_Score'] == '-', 0, data['Map2_Team1_Score'])
+data['Map2_Team2_Score'] = np.where(data['Map2_Team2_Score'] is None or data['Map2_Team2_Score'] == '-', 0, data['Map2_Team2_Score'])
+data['Map3_Team1_Score'] = np.where(data['Map3_Team1_Score'] is None or data['Map3_Team1_Score'] == '-', 0, data['Map3_Team1_Score'])
+data['Map3_Team2_Score'] = np.where(data['Map3_Team2_Score'] is None or data['Map3_Team2_Score'] == '-', 0, data['Map3_Team2_Score'])
